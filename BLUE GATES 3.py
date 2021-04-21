@@ -91,7 +91,7 @@ for _ in range(14):
     complete_result.append(list(flatten(correct_res_norm))) 
 
 
-# ## 3 till 15
+# ## The following lists are the results of a total of 24 runs if the cide above
 
 # In[14]:
 
@@ -152,7 +152,10 @@ for i in tot_res:
 ## Option 1: Show all experiments overlapped: keep 'show()'     
 ## Option 2: Show all experiments separately: align 'show()' with scatter above 
 show()
-    
+
+## See 'RESULT 1'
+
+
 ## The following is the average of all experiments
 ave_res = list(average(data1, axis=0))
 scatter(range(len(ave_res)), ave_res ,s=0.5) 
@@ -161,6 +164,8 @@ show()
 #scatter(range(len(ave_res))[0::2], ave_res[0::2] ,s=0.5) 
 #scatter(range(len(ave_res))[1::2], ave_res[1::2] ,s=0.5) 
 #show()
+
+## See 'RESULT 2'
 
 
 # In[20]:
@@ -179,6 +184,7 @@ for experiment in tot_res:
         hist[y][x] += 1        
     all_matr.append(hist)
 
+## See 'RESULT 3'
 
 # In[21]:
 
@@ -309,6 +315,9 @@ for i in tot_res_had:
 ## Option 2: Show all experiments separately: align 'show()' with scatter above 
 show()
     
+## See 'RESULT 4'
+
+    
 ## The following is the average of all experiments
 ave_res = list(average(data1, axis=0))
 scatter(range(len(ave_res)), ave_res ,s=0.5) 
@@ -318,76 +327,5 @@ show()
 #scatter(range(len(ave_res))[1::2], ave_res[1::2] ,s=0.5) 
 #show()
 
-
-# ## The following can be used to find the basis gates of the quantum computer in use
-#  Just make sure that the gate on line 3 is not a basis gate
-
-# In[7]:
-
-
-## check which basis state are accepted for given quantum computer in error
-circuit = QuantumCircuit(1,1)  # create a new circuit 
-circuit.sx(0)
-circuit.rz(.5*pi,0)
-circuit.measure(0,0)
-
-backend = provider.get_backend("ibmq_qasm_simulator")
-job = backend.run(circuit) 
-retrieved_job = backend.retrieve_job(job.job_id())
-job_monitor(job)
-
-result = retrieved_job.result()
-counts = result.get_counts()
-
-
-# In[8]:
-
-
-plot_histogram(counts)
-
-
-# In[ ]:
-
-
-qc = QuantumCircuit(1,1)  # create a new circuit 
-qc.rz(pi,0)
-qc.measure(0,0)
-
-backend = provider.get_backend("ibmq_qasm_simulator")
-job = backend.run(circuit) # the command run() does not transpile automatically 
-retrieved_job = backend.retrieve_job(job.job_id())
-job_monitor(job)
-
-result = [] 
-counts = []
-# gets results and counts of every package 
-result = retrieved_job.result()
-counts = result.get_counts()
-
-
-# In[12]:
-
-
-#qc = QuantumCircuit(1,1)  # create a new circuit 
-#qc.rz(pi,0)
-#qc.measure(0,0)
-
-qc = QuantumCircuit(1)
-#qc.h(0)
-qc.sx(0)
-qc.sx(0)
-
-#qc.rz(.5*pi,0)
-qc.draw()
-
-svsim = Aer.get_backend('statevector_simulator')
-qobj = assemble(qc)
-state = svsim.run(qobj).result().get_statevector()
-plot_bloch_multivector(state)
-
-
-# In[ ]:
-
-
-
+## See 'RESULT 4'
 
