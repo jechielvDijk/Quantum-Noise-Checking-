@@ -327,5 +327,5 @@ show()
 #scatter(range(len(ave_res))[1::2], ave_res[1::2] ,s=0.5) 
 #show()
 
-## See 'RESULT 4'
+## See 'RESULT 5'
 
